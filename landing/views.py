@@ -40,13 +40,12 @@ def Drop_resume(request):
 
 
 def Profile(request):
-    # Check if the user is logged in via cookies
     user_id = request.COOKIES.get('user_id')
     user_role = request.COOKIES.get('role')
     
     if not user_id or not user_role:
         messages.error(request, "User is not logged in.")
-        return redirect('Login')  # Redirect to login page if cookies are missing
+        return redirect('Login') 
     
     # Determine the user type and fetch the respective model
     user = None
@@ -68,7 +67,7 @@ def Profile(request):
             messages.error(request, "Invalid file type. Only JPEG and PNG are allowed.")
             return redirect('Profile')
 
-        if uploaded_file.size > 5 * 1024 * 1024:  # Limit to 5 MB
+        if uploaded_file.size > 5 * 1024 * 1024:  
             messages.error(request, "File size exceeds the limit of 5 MB.")
             return redirect('Profile')
 
@@ -82,9 +81,7 @@ def Profile(request):
         user.profile.save()
 
         messages.success(request, "Profile picture updated successfully!")
-        return redirect('Profile')  # Redirect back to the profile page
-
-    # If it's a GET request, render the profile page
+        return redirect('Profile')  
     return render(request, 'Profile.html', {'user': user})
 
 def Post(request):

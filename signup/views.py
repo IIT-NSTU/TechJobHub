@@ -58,7 +58,7 @@ def loginaction(request):
         recruiter = Recruiter.objects.filter(email=email).first()
         if recruiter and recruiter.check_password(password):
             if recruiter.company_details_filled:
-                response = redirect('Dashboard')  # Redirect to the dashboard
+                response = redirect('Dashboard')  
             else:
                 response = redirect('company_details')
             response.set_cookie('user_id', recruiter.r_id)
@@ -67,7 +67,7 @@ def loginaction(request):
 
         job_seeker = JobSeeker.objects.filter(email=email).first()
         if job_seeker and job_seeker.check_password(password):
-            response = redirect('Dashboard')  # Redirect to dashboard
+            response = redirect('Dashboard')  
             response.set_cookie('user_id', job_seeker.js_id)
             response.set_cookie('role', 'Job Seeker')
             return response
@@ -75,12 +75,6 @@ def loginaction(request):
         return redirect('Login')
 
     return render(request, 'Login.html')
-
-    
-# def logout(request):
-#     request.session.flush()  # Clears the session
-#     messages.success(request, "You have been logged out.")
-#     return redirect('Login')
 
 def create_company(request):
     if request.method == 'POST':
@@ -133,7 +127,7 @@ def profile_view(request):
 
     if not user_id or not role:
         messages.error(request, "You need to log in to view your profile.")
-        return redirect('Login')  # Redirect to login page
+        return redirect('Login')  
 
     user = None
     if role == 'Recruiter':
@@ -208,7 +202,7 @@ def create_post(request):
         job_post.save()
 
         messages.success(request, "Job post created successfully!")
-        return redirect('Dashboard')  # Redirect to the dashboard or any appropriate page
+        return redirect('Dashboard')  
 
     return render(request, 'Create_post.html')
 
@@ -219,7 +213,7 @@ def is_valid_resume(file):
         'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
     ]
     valid_extensions = ['.pdf', '.doc', '.docx']
-    max_file_size = 5 * 1024 * 1024  # 5MB
+    max_file_size = 5 * 1024 * 1024  
 
     if file.content_type not in valid_mime_types:
         return False, "Invalid file type. Only PDF and Word documents are allowed."
@@ -237,7 +231,7 @@ def drop_resume(request):
 
     if not user_id or role != 'Job Seeker':
         messages.error(request, "You must be logged in as a Job Seeker to upload a resume.")
-        return redirect('Login')  # Redirect to login page if not authenticated
+        return redirect('Login') 
 
     try:
         job_seeker = JobSeeker.objects.get(js_id=user_id)
@@ -250,7 +244,7 @@ def drop_resume(request):
             valid, error_message = is_valid_resume(resume_file)
             if valid:
                 job_seeker.resume = resume_file
-                job_seeker.save()  # Save the JobSeeker instance to update the resume field
+                job_seeker.save()  
                 messages.success(request, "Resume uploaded successfully!")
                 return redirect('drop_resume')
             else:

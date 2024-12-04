@@ -1,29 +1,13 @@
-# # from django.db import models
-
-# # Create your models here.
-# from django.db import models
-
-# class Job(models.Model):
-#     title = models.CharField(max_length=200)
-#     description = models.TextField()
-#     company = models.CharField(max_length=100)
-#     location = models.CharField(max_length=100)
-#     posted_date = models.DateTimeField(auto_now_add=True)
-#     is_active = models.BooleanField(default=True)
-
-#     def __str__(self):
-#         return self.title
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password, check_password
 class Recruiter(models.Model):
-    r_id = models.AutoField(primary_key=True)  # Auto-incrementing ID
+    r_id = models.AutoField(primary_key=True) 
     fname = models.CharField(max_length=100)
     lname = models.CharField(max_length=100)
-    email = models.EmailField(unique=True)  # Ensures unique emails
-    password = models.CharField(max_length=128)  # Accommodates hashed passwords
-    address = models.TextField()  # TextField for more flexible address storage
-
+    email = models.EmailField(unique=True)  
+    password = models.CharField(max_length=128)  
+    address = models.TextField()  
     def set_password(self, raw_password):
         self.password = make_password(raw_password)
         self.save()
@@ -41,7 +25,7 @@ class Company(models.Model):
     name = models.CharField(max_length=100)
     address = models.TextField()
     description = models.TextField()
-    trade_license_number = models.CharField(max_length=100, unique=True)  # Unique trade license
+    trade_license_number = models.CharField(max_length=100, unique=True) 
 
     def __str__(self):
         return self.name
@@ -55,7 +39,7 @@ class JobPost(models.Model):
     deadline = models.DateField()
     description = models.TextField()
     location = models.CharField(max_length=100)
-    job_type = models.CharField(max_length=100)  # E.g., Full-time, Part-time
+    job_type = models.CharField(max_length=100)  
     years_experience = models.PositiveIntegerField()
     key_responsibilities = models.TextField()
 
@@ -71,7 +55,7 @@ class JobSeeker(models.Model):
     password = models.CharField(max_length=128)
     address = models.TextField()
     education = models.TextField()
-    resume = models.FileField(upload_to='resumes/')  # Supports file upload
+    resume = models.FileField(upload_to='resumes/')  
 
     def set_password(self, raw_password):
         self.password = make_password(raw_password)
@@ -143,7 +127,7 @@ class Answer(models.Model):
 class Assessment(models.Model):
     asses_id = models.AutoField(primary_key=True)
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE, related_name="assessments")
-    marks = models.JSONField()  # Store marks as a JSON object for flexibility
+    marks = models.JSONField()  
 
     def __str__(self):
         return f"Assessment {self.asses_id}"
