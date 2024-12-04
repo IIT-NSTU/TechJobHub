@@ -1,5 +1,6 @@
 # TechJobHub
 Project Name: TechJobHub
+
 TechJobHub is an innovative web platform designed to streamline the process of finding and applying for tech-related job opportunities. The platform serves as a bridge between job seekers and recruiters, offering a secure and user-friendly environment for both parties. Developed with Django for the backend and a modern, responsive frontend, TechJobHub offers a range of features for a smooth user experience.
 
 For job seekers, the platform allows users to create and manage detailed profiles, showcasing their skills, work experience, and educational background. They can upload their resumes, add certifications, and track their job applications. The job listings section provides a curated selection of opportunities, enabling job seekers to search for relevant positions based on their skills and location.
