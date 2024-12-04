@@ -11,17 +11,26 @@ TechJobHub ensures secure authentication and easy navigation through its intuiti
 
 # Features
 User authentication (sign-up, login, logout)
+
 Profile management for job seekers
+
 Skills management
+
 Responsive frontend using HTML, CSS, and JavaScript
+
 Backend powered by Django
+
 Database integration for persistent data storage
+
 # Requirements
 Before running the project, ensure the following are installed:
 
 Python 3.9+ (Python 3.12 recommended)
+
 Django 5.1.2
+
 Pipenv or virtualenv for dependency management
+
 A database system (SQLite is used by default; you can configure PostgreSQL/MySQL if needed)
 
 # How to configure  and run the project
