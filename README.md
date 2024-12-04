@@ -35,13 +35,19 @@ A database system (SQLite is used by default; you can configure PostgreSQL/MySQL
 
 # How to configure  and run the project
 $ git clone https://github.com/IIT-NSTU/TechJobHub.git
+
 $ cd TechJobHub
 
 Run Database Migrations : python manage.py migrate
+
 $ python manage.py runserver
+
 Visit the application at http://127.0.0.1:8000/.
 
 Contributors 
+
 • Makmudul Hasan Rabbi  
+
 • Jarin Thasnin Ahmed
+
 • Shaila Rahaman 
