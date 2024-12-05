@@ -103,12 +103,6 @@ def Assessment_mark(request):
     return render(request, 'Assessment_mark.html')
 
 def Company_details(request):
-    # if 'user_id' not in request.session and 'role' not in request.session:
-        # ei khane check korte hobe role er value ('Job Seeker') ki nah
-        # jodi na hoi taile login e redirect
-        # both are same
-    #     messages.error(request, "User is not logged in.")
-    #     return redirect('Login')  # Redirect to login page
      return render(request, 'Company_details.html')
 
 def Rating(request):
@@ -124,17 +118,8 @@ def Virtual_int(request):
     return render(request, 'Virtual_int.html')
 
 
-# from .models import Job
-
-# def job_list(request):
-#     jobs = Job.objects.filter(is_active=True)
-#     return render(request, 'job_list.html', {'jobs': jobs})
-
 def logout(request):
-    response = redirect('Login')  # Redirect to login page
-    # Clear session data
-    #request.session.flush()
-    # Clear cookies
+    response = redirect('Login') 
     response.delete_cookie('user_id')
     response.delete_cookie('role')
     
